@@ -339,7 +339,7 @@ http://127.0.0.1:8000
 
 > Interface permettant d'enregistrer et de suivre les amendes liées aux opérations d'inspection.
 
-![Gestion des amendes](screenshots/SuiviAmendes.png)
+![Gestion des amendes](screenshots/SuiviAMendes.png)
 
 
 ### 📄 Liste des rapports

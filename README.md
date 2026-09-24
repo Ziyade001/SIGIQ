@@ -1,59 +1,429 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIGIQ — Système Intégré de Gestion des Inspections et du Contrôle Qualité
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Plateforme web de digitalisation et de suivi des missions d’inspection et des opérations de contrôle qualité.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square\&logo=laravel\&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square\&logo=php\&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=flat-square\&logo=mysql\&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square\&logo=bootstrap\&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square\&logo=javascript\&logoColor=black)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Présentation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**SIGIQ** (Système Intégré de Gestion des Inspections et du Contrôle Qualité) est une application web conçue pour faciliter la gestion et le suivi des missions d’inspection.
 
-## Learning Laravel
+L'application permet de centraliser les informations relatives aux missions, aux équipes d'inspection, aux entreprises contrôlées, aux inspections réalisées et aux rapports générés.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Elle a été développée dans le cadre d'un projet académique et constitue également une étude de cas démontrant la mise en œuvre d'une application métier avec Laravel.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🎯 Problématique
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Le suivi des missions d'inspection peut être confronté à plusieurs difficultés lorsque les informations sont gérées principalement sur support papier ou à travers plusieurs outils :
 
-### Premium Partners
+* difficulté de centraliser les informations ;
+* suivi manuel des missions ;
+* dispersion des données ;
+* difficulté à retrouver l'historique des inspections ;
+* production manuelle de certains documents ;
+* manque de visibilité sur l'état d'avancement des missions.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**SIGIQ propose une solution numérique permettant de centraliser et de structurer ces différents processus.**
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 💡 Solution proposée
 
-## Code of Conduct
+SIGIQ permet aux différents utilisateurs de gérer les principales étapes du processus d'inspection depuis une interface web centralisée.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+La plateforme permet notamment de :
 
-## Security Vulnerabilities
+* créer et gérer des missions ;
+* affecter les membres des équipes aux missions ;
+* définir un chef d'équipe ;
+* consulter les missions assignées ;
+* enregistrer les inspections ;
+* suivre l'état des inspections ;
+* générer des rapports ;
+* générer des convocations avec QR code ;
+* gérer les amendes et leurs justificatifs ;
+* consulter des tableaux de bord statistiques ;
+* administrer les utilisateurs et leurs accès.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 👥 Gestion des utilisateurs
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+L'application prend en charge plusieurs profils utilisateurs :
+
+| Rôle                    | Principales responsabilités                                        |
+| ----------------------- | ------------------------------------------------------------------ |
+| **Administrateur**      | Gestion des utilisateurs, rôles et accès                           |
+| **Directeur Général**   | Consultation et suivi global                                       |
+| **Directeur Technique** | Création et gestion des missions                                   |
+| **Inspecteur**          | Consultation des missions assignées et réalisation des inspections |
+
+Les droits d'accès sont adaptés au rôle de chaque utilisateur.
+
+---
+
+## ⚙️ Fonctionnalités principales
+
+### 🔐 Authentification et gestion des accès
+
+* Connexion sécurisée
+* Gestion des rôles
+* Activation et désactivation des comptes
+* Gestion des utilisateurs
+* Réinitialisation des mots de passe
+
+### 📋 Gestion des missions
+
+* Création de missions
+* Définition du type de mission
+* Définition de la période
+* Définition des localités concernées
+* Affectation des inspecteurs
+* Désignation du chef d'équipe
+* Suivi des missions
+
+### 🔎 Gestion des inspections
+
+Les inspecteurs peuvent consulter leurs missions et enregistrer les informations relatives aux inspections effectuées.
+
+Les principaux types d'inspection pris en compte comprennent notamment :
+
+* Pesage
+* Volume
+* Produits préemballés
+
+### 📄 Gestion des rapports
+
+SIGIQ permet de centraliser les informations nécessaires à la production des rapports d'inspection.
+
+Les rapports sont associés aux missions et aux inspections correspondantes afin de faciliter leur suivi et leur consultation.
+
+### 📱 QR Codes
+
+Des QR codes peuvent être associés à certains documents générés par la plateforme, notamment :
+
+* convocations ;
+* justificatifs liés aux amendes.
+
+### 💰 Gestion des amendes
+
+La plateforme permet d'enregistrer les informations relatives aux amendes et de générer un justificatif contenant les informations nécessaires ainsi qu'un QR code.
+
+### 📊 Tableau de bord
+
+Les tableaux de bord permettent de visualiser différents indicateurs liés à l'activité de la plateforme :
+
+* nombre de missions ;
+* inspections ;
+* utilisateurs ;
+* états des missions ;
+* autres statistiques disponibles selon le profil.
+
+---
+
+## 🛠️ Technologies utilisées
+
+### Backend
+
+* **PHP 8.2**
+* **Laravel 12**
+
+### Base de données
+
+* **MySQL**
+
+### Frontend
+
+* **HTML5**
+* **CSS3**
+* **Bootstrap**
+* **JavaScript**
+
+### Outils
+
+* **Git**
+* **GitHub**
+* **Composer**
+* **Vite**
+
+---
+
+## 🏗️ Architecture
+
+L'application repose sur l'architecture **MVC (Model-View-Controller)** proposée par Laravel.
+
+```text
+SIGIQ
+│
+├── app/
+│   ├── Models/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   └── Requests/
+│   └── ...
+│
+├── database/
+│   ├── migrations/
+│   └── seeders/
+│
+├── resources/
+│   ├── views/
+│   ├── css/
+│   └── js/
+│
+├── routes/
+│   └── web.php
+│
+├── public/
+├── storage/
+├── tests/
+├── composer.json
+└── README.md
+```
+
+---
+
+## 🚀 Installation
+
+### Prérequis
+
+Avant d'installer SIGIQ, assurez-vous d'avoir :
+
+* PHP >= 8.2
+* Composer
+* MySQL
+* Node.js et npm
+* Git
+
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/Ziyade001/SIGIQ.git
+```
+
+### 2. Accéder au projet
+
+```bash
+cd SIGIQ
+```
+
+### 3. Installer les dépendances PHP
+
+```bash
+composer install
+```
+
+### 4. Installer les dépendances JavaScript
+
+```bash
+npm install
+```
+
+### 5. Configurer l'environnement
+
+Copier le fichier `.env.example` :
+
+```bash
+cp .env.example .env
+```
+
+Sous Windows PowerShell :
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### 6. Générer la clé de l'application
+
+```bash
+php artisan key:generate
+```
+
+### 7. Configurer la base de données
+
+Modifier les paramètres suivants dans `.env` :
+
+```env
+DB_DATABASE=sigiq
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Créer ensuite la base de données `sigiq` dans MySQL.
+
+### 8. Exécuter les migrations
+
+```bash
+php artisan migrate
+```
+
+Si des données de démonstration sont disponibles :
+
+```bash
+php artisan db:seed
+```
+
+### 9. Compiler les assets
+
+```bash
+npm run build
+```
+
+Pour le développement :
+
+```bash
+npm run dev
+```
+
+### 10. Démarrer le serveur
+
+```bash
+php artisan serve
+```
+
+L'application sera accessible à l'adresse :
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## 📸 Captures d’écran
+
+### 🏠 Page d'accueil
+
+> Présentation de la plateforme SIGIQ et accès aux principales fonctionnalités.
+
+![Page d'accueil](screenshots/Accueil.png)
+
+### 🔐 Connexion
+
+> Interface d'authentification permettant aux utilisateurs d'accéder à la plateforme selon leur profil.
+
+![Page de connexion](screenshots/login.png)
+
+### 📊 Tableau de bord
+
+> Vue synthétique permettant de suivre les principales informations et statistiques de l'activité.
+
+![Tableau de bord](screenshots/dashboard.png)
+
+### 📋 Gestion des missions
+
+> Interface dédiée à la création, à la consultation et au suivi des missions d'inspection.
+
+![Gestion des missions](screenshots/missions.png)
+
+### ➕ Ajout
+
+> Formulaire permettant d'enregistrer de nouvelles informations dans la plateforme.
+
+![Formulaire d'ajout](screenshots/ajout.png)
+
+### 🔎 Inspection
+
+> Interface permettant aux inspecteurs de renseigner les informations relatives aux inspections réalisées.
+
+![Inspection](screenshots/inspection.png)
+
+### 💰 Gestion des amendes
+
+> Interface permettant d'enregistrer et de suivre les amendes liées aux opérations d'inspection.
+
+![Gestion des amendes](screenshots/SuiviAmendes.png)
+
+
+### 📄 Liste des rapports
+
+> Interface permettant de consulter et de suivre les rapports d'inspection enregistrés dans la plateforme.
+
+![Liste des rapports](screenshots/listRap.png)
+
+### 📑 Rapport d'inspection
+
+> Exemple de rapport d'inspection généré à partir des informations enregistrées dans SIGIQ.
+
+![Rapport d'inspection](screenshots/rapport.png)
+
+### 👥 Gestion des utilisateurs
+
+> Interface d'administration permettant de consulter et de gérer les utilisateurs de la plateforme.
+
+![Liste des utilisateurs](screenshots/listUser.png)
+
+
+---
+
+## 🔒 Sécurité
+
+Le projet intègre plusieurs mécanismes liés à la sécurité et au contrôle des accès :
+
+* authentification ;
+* gestion des rôles ;
+* contrôle des accès selon le profil utilisateur ;
+* protection des routes ;
+* validation des données ;
+* gestion sécurisée des mots de passe.
+
+Les informations sensibles de configuration ne sont pas intégrées au dépôt grâce au fichier `.gitignore`.
+
+---
+
+## 📈 Objectifs du projet
+
+SIGIQ vise principalement à :
+
+* centraliser les données relatives aux inspections ;
+* améliorer le suivi des missions ;
+* faciliter l'accès à l'historique des inspections ;
+* structurer la gestion des équipes ;
+* réduire certaines tâches administratives manuelles ;
+* faciliter la production et la consultation des documents.
+
+---
+
+## 🔮 Évolutions possibles
+
+Plusieurs améliorations peuvent être envisagées :
+
+* application mobile ;
+* fonctionnement hors ligne pour les inspections sur le terrain ;
+* synchronisation des données ;
+* authentification à deux facteurs ;
+* notifications ;
+* amélioration des tableaux de bord ;
+* statistiques avancées ;
+* système de journalisation plus détaillé.
+
+---
+
+## 👨‍💻 Auteur
+
+**Ziyade AMINOU**
+
+Développeur Full Stack | Web • No-Code • Automatisation
+
+**Technologies principales :** PHP • Laravel • JavaScript • MySQL • WordPress
+
+---
+
+## 📄 Contexte
+
+Projet réalisé dans le cadre d'une formation en **Informatique de Gestion — Analyse Informatique et Programmation**.
+
+SIGIQ constitue également une étude de cas présentée dans le portfolio professionnel **Z’DEV**.
+
+---
+
+## ⭐ Projet
+
+Si ce projet vous intéresse, vous pouvez consulter le code source et suivre son évolution sur GitHub.
